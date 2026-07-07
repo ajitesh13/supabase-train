@@ -62,6 +62,10 @@ onMounted(() => {
     <h1>Supabase Edge Functions Demo</h1>
     <p>Project ref: <code>rjvnmwmhfkgisnvkqphz</code></p>
 
+    <button :disabled="group2Loading.active" @click="loadGroup2">
+      {{ group2Loading.active ? 'Calling…' : 'Call Group 2 functions' }}
+    </button>
+
     <section>
       <h2>Group 1 (1 write + 3 reads) &mdash; fired automatically on load</h2>
       <div class="cards">
@@ -76,9 +80,6 @@ onMounted(() => {
 
     <section>
       <h2>Group 2 (1 write + 1 read) &mdash; fired on button click</h2>
-      <button :disabled="group2Loading.active" @click="loadGroup2">
-        {{ group2Loading.active ? 'Calling…' : 'Call Group 2 functions' }}
-      </button>
       <div class="cards">
         <div v-for="fn in GROUP2" :key="fn.name" class="card">
           <h3>{{ fn.name }}</h3>
