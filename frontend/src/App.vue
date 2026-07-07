@@ -73,7 +73,8 @@ onMounted(() => {
           <h3>{{ fn.name }}</h3>
           <p v-if="group1[fn.name].loading">Loading…</p>
           <p v-else-if="group1[fn.name].error" class="error">{{ group1[fn.name].error }}</p>
-          <pre v-else>{{ JSON.stringify(group1[fn.name].data, null, 2) }}</pre>
+          <!-- <pre v-else>{{ JSON.stringify(group1[fn.name].data, null, 2) }}</pre> -->
+          <p v-else class="called">{{ fn.name }} ({{ fn.method }}) called</p>
         </div>
       </div>
     </section>
@@ -85,7 +86,8 @@ onMounted(() => {
           <h3>{{ fn.name }}</h3>
           <p v-if="group2[fn.name].loading">Loading…</p>
           <p v-else-if="group2[fn.name].error" class="error">{{ group2[fn.name].error }}</p>
-          <pre v-else-if="group2[fn.name].data">{{ JSON.stringify(group2[fn.name].data, null, 2) }}</pre>
+          <!-- <pre v-else-if="group2[fn.name].data">{{ JSON.stringify(group2[fn.name].data, null, 2) }}</pre> -->
+          <p v-else-if="group2[fn.name].data" class="called">{{ fn.name }} ({{ fn.method }}) called</p>
           <p v-else class="muted">Not called yet.</p>
         </div>
       </div>
@@ -134,6 +136,11 @@ pre {
 
 .muted {
   color: #888;
+}
+
+.called {
+  color: #2a7;
+  font-weight: 600;
 }
 
 button {
